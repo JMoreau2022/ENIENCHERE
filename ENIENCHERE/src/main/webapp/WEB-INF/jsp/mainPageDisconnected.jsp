@@ -26,36 +26,28 @@
 
 		<div class = "container-1">
 
+			<form action="<%=request.getContextPath()%>/Recherche" method="post">
 			<div>
 
-				<form action="<%=request.getContextPath()%>/Recherche" method="post">
-					<label for="filter">
-						<input type = "text">
-					</label>
-				</form>
+					<p><label for="disconnected-search-filter">
+						Filtre : <input type = "text">
+					</label></p>
 
-			</div>
-
-			<div>
-
-					<form action="" method="post">
-						<select style="width: 100%;">
+				<p>
+					<label for="search-categorie">Catégorie : </label>
+					<select style="width: 100%;">
 						<option value = "optionToutes">Toutes</option>
 						<option value = "optionInformatique">Informatique</option>
 						<option value = "optionAmeublement">Ameublement</option>
 						<option value = "optionVêtement">Vêtement</option>
 						<option value = "optionSport&Loisirs">Sports & Loisirs</option>
-						</select>
-					</form>
+					</select>
+				</p>
 
+				<div class = "searchBtn">
+					<button></button>
 				</div>
 
-			</div>
-			
-			<div class = "searchBtn">
-				<form method="post">
-					<input type = "submit" value = "Rechercher" class = "search_btn">
-				</form>
 			</div>
 
 		</div>
