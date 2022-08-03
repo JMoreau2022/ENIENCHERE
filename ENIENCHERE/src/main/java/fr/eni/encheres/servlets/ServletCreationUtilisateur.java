@@ -42,16 +42,16 @@ public class ServletCreationUtilisateur extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 			// recupération des paramêtres dans la requête
-			String pseudo = request.getParameter("pseudo".trim());
-			String nom = request.getParameter("nom".trim());
-			String prenom = request.getParameter("prenom".trim());
-			String email = request.getParameter("email".trim());
-			String telephone = request.getParameter("telephone".trim());
-			String rue = request.getParameter("rue".trim());
-			String codePostal = request.getParameter("codepostal".trim());
-			String ville = request.getParameter("ville".trim());
-			String mdp = request.getParameter("mdp".trim());
-			String confirmationMdp = request.getParameter("confirmationMdp".trim());
+			String pseudo = request.getParameter("pseudo").trim();
+			String nom = request.getParameter("nom").trim();
+			String prenom = request.getParameter("prenom").trim();
+			String email = request.getParameter("email").trim();
+			String telephone = request.getParameter("telephone").trim();
+			String rue = request.getParameter("rue").trim();
+			String codePostal = request.getParameter("codepostal").trim();
+			String ville = request.getParameter("ville").trim();
+			String mdp = request.getParameter("mdp").trim();
+			String confirmationMdp = request.getParameter("confirmationMdp").trim();
 
 			// si les mots de passe sont identiques, on essaie de créer l'utilisateur après avoir testé la validation de tous les champs
 			if (confirmationMdp.equals(mdp)){

@@ -35,9 +35,17 @@ public class UtilisateurManager {
 		
 		Utilisateur utilisateur = null;
 		BusinessException be = new BusinessException(); 
-		// la validation de tous les champs sera à faire ici
+
+		// La connexion se faisant par le pseudo ou le mail, on va tester l'unicité de chacun des 2 avant d'ajouter un utilisateur
+		if (this.utilisateurDAO.selectUserByPseudo(pseudo)!=null) {
+			be.ajouterErreur(CodesResultatBLL.USER_PSEUDO_DEJA_EXISTANT);
+		}
+		if (this.utilisateurDAO.selectUserByMail(email)!=null) {
+			be.ajouterErreur(CodesResultatBLL.USER_MAIL_DEJA_EXISTANT);
+		}
 		
-		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, mdp, 500, 0);
+		// création d'un ojet Utilisateur
+		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, mdp, 100, 0);
 		
 		// teste la validité de toutes les données saisies dans le formulaire
 		validationPseudo(utilisateur, be);
@@ -62,6 +70,10 @@ public class UtilisateurManager {
 	private void validationPseudo(Utilisateur utilisateur, BusinessException be) {
 		if (utilisateur.getPseudo() == null || utilisateur.getPseudo().isEmpty() || utilisateur.getPseudo().length() > 30) {
 			be.ajouterErreur(CodesResultatBLL.USER_PSEUDO_ERREUR);
+		}
+		else
+		if (!utilisateur.getPseudo().matches("^[a-zA-Z0-9]*$")) {
+			be.ajouterErreur(CodesResultatBLL.USER_PSEUDO_FORMAT_INVALIDE);
 		}
 	}
 	private void validationNom(Utilisateur utilisateur, BusinessException be) {
@@ -102,6 +114,35 @@ public class UtilisateurManager {
 	private void validationMDP(Utilisateur utilisateur, BusinessException be) {
 		if (utilisateur.getMot_de_passe() == null || utilisateur.getMot_de_passe().isEmpty() || utilisateur.getMot_de_passe().length() > 30) {
 			be.ajouterErreur(CodesResultatBLL.USER_MDP_ERREUR);
+		}
+	}
+
+	/**
+	 * Méthode renvoyant l'utilisateur si celui-ci est trouvé en base de données selon son identifiant et son mot de passe
+	 * @param identifiant
+	 * @param mdp
+	 * @return
+	 * @throws BusinessException
+	 */
+	public Utilisateur connexionUtilisateur(String identifiant, String mdp) throws BusinessException {
+		Utilisateur utilisateur = null;
+		BusinessException be = new BusinessException(); 
+		
+		// on peut se connecter soit par le pseudo soit par le mail
+		if (identifiant.contains("@")) {
+			utilisateur = this.utilisateurDAO.selectUserByMail(identifiant);
+		}
+		else {
+			utilisateur = this.utilisateurDAO.selectUserByPseudo(identifiant);
+		}
+			
+		// Si l'utilisateur existe et que le mot de passe est correcte, on retourne l'utilisateur, sinon on renvoi une erreur
+		if (utilisateur!=null && utilisateur.getMot_de_passe().equals(mdp)) {
+			return utilisateur;
+		}
+		else {
+			be.ajouterErreur(CodesResultatBLL.USER_IDENTIFIANT_MDP_INVALIDE);
+			throw be;
 		}
 	}
 	
