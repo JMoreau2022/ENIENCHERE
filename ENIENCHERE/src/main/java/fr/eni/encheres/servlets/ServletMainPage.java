@@ -10,20 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bo.ListeEncheres;
+
 /**
  * Servlet implementation class ServletMainPage
  */
 @WebServlet("/DisconnectedMainPage")
 public class ServletMainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletMainPage() {
-        super();
-    }
-
+	
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -33,6 +29,7 @@ public class ServletMainPage extends HttpServlet {
 	}
 
 	/**
+	 * @param enchereEnCours 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +42,15 @@ public class ServletMainPage extends HttpServlet {
 		String finEnchere = request.getParameter("finEnchere".trim());
 		String nomVendeur = request.getParameter("nomVendeur".trim());
 		
+		//attribution des paramètres
 		
+		request.setAttribute("enchereEnCoursTitre", titre);
+		request.setAttribute("enchereEnCoursPrix", prix);
+		request.setAttribute("enchereEnCoursFinEnchere", finEnchere);
+		request.setAttribute("enchereEnCoursNomVendeur", nomVendeur);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/DisconnectedMainPage.jsp");
+		rd.forward(request, response);
 		doGet(request, response);
 	}
 
