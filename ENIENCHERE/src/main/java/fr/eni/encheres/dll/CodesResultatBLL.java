@@ -13,5 +13,12 @@ public class CodesResultatBLL {
 	public static final Integer USER_VILLE_ERREUR = 20008;
 	public static final Integer USER_MDP_ERREUR = 20009;
 	public static final Integer USER_MDP_DIFFERENT = 20010;
+	public static final Integer USER_PSEUDO_DEJA_EXISTANT = 20011;
+	public static final Integer USER_MAIL_DEJA_EXISTANT = 20012;
+	public static final Integer USER_PSEUDO_FORMAT_INVALIDE = 20013;
+
+	// Erreur concernant la connexion des utilisateurs
+	public static final Integer USER_IDENTIFIANT_MDP_INVALIDE = 20020;
+	
 	
 }

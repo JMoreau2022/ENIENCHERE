@@ -5,7 +5,12 @@ import fr.eni.encheres.messages.BusinessException;
 
 public interface UtilisateurDAO {
 
-	void ajouterUtilisateur(Utilisateur utilisateur) throws BusinessException;
+	public void ajouterUtilisateur(Utilisateur utilisateur) throws BusinessException;
+	
+	public Utilisateur selectUserByPseudo(String pseudo) throws BusinessException;
+	
+	public Utilisateur selectUserByMail(String email) throws BusinessException;
+	
 	void testConnexion();
 	
 	 
