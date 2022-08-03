@@ -11,25 +11,26 @@
 <title>Création compte</title>
 </head>
 <body>
-
-	<h1>Test de connexion</h1>
+	
+<%-- 	<h1>Test de connexion</h1>
 
 	<form action="<%=request.getContextPath()%>/CreationUtilisateur" method="post">
 	
-		<label for="idNom">Nom : </label><input type="text" id="idNom" name="nom" value=""/>
+		<label for="idNom">Nom : </label><input class="info" type="text" id="idNom" name="nom" value=""/>
 		<br/>
-		<label for="idPrenom">Prénom : </label><input type="text" id="idPrenom" name="prenom" value=""/>
+		<label for="idPrenom">Prénom : </label><input class="info" type="text" id="idPrenom" name="prenom" value=""/>
 		<br/>
 		<input type="submit" value="Valider"/>
 	</form>
-
-	<h1>Création d'un nouvel utilisateur</h1>
+ --%>	
+	
+	<h1>Mon profil</h1>
 
 		<div>
 		<form method="post" action="<%=request.getContextPath()%>/CreationUtilisateur">
 		
-			<div> 
-				<div id="UserGauche">
+			<div id="conteneur"> 
+				<div id="user-gauche">
 				
 					<div>
 					<label for="pseudo">Pseudo* : </label>
@@ -58,7 +59,7 @@
 	            
 				</div>
 				
-				<div id="UserGauche">
+				<div id="user-droite">
 				
 					<div>
 					<label for="nom">Nom* : </label>
@@ -88,7 +89,8 @@
 				</div>
 			</div>	
 			
-			<div>
+			<p>* : ces champs sont obligatoires.</p>
+			<div class="btnUser">
 				<input type="submit" value="Créer" name="boutonCreer">	
 				
 				<a href="%=request.getContextPath()%>/Accueil"><input type="button" value="Annuler" name="boutonAnnuler"></a>			
@@ -109,7 +111,6 @@
 		</c:if>
 		
 		
-		<p>* : ces champs sont obligatoires.</p>
 
 
 </body>

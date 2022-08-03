@@ -15,6 +15,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	private static final String INSERT_TEST="INSERT INTO CATEGORIES(libelle) VALUES(?);";
 	private static final String INSERT_UTILISATEUR="INSERT INTO UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String SELECT_UTILISATEUR_BY_PSEUDO="SELECT no_utilisateur,pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur FROM UTILISATEURS WHERE PSEUDO=?";
+	private static final String SELECT_UTILISATEUR_BY_EMAIL="SELECT no_utilisateur,pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur FROM UTILISATEURS WHERE email=?";
 		
 	@Override
 	public void testConnexion() {
@@ -71,6 +73,65 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 		//return utilisateur;
 		
+	}
+
+	@Override
+	/**
+	 * Renvoi un utilisateur si le pseudo passé en paramêtre existe en BDD
+	 */
+	public Utilisateur selectUserByPseudo(String pseudo) throws BusinessException {
+		Utilisateur utilisateur = null;
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_PSEUDO);) {
+			pstmt.setString(1, pseudo);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+							rs.getString("nom"), rs.getString("prenom"), rs.getString("email"),
+							rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"),
+							rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"),
+							rs.getInt("administrateur"));
+				
+				} 
+				return utilisateur;	
+			} catch (Exception e) {
+				BusinessException be = new BusinessException();
+				be.ajouterErreur(CodesResultatDAL.CODE_ERREUR_TECHNIQUE);
+				throw be;
+			}
+		} catch (Exception e) {
+			BusinessException be = new BusinessException();
+			be.ajouterErreur(CodesResultatDAL.CODE_ERREUR_TECHNIQUE);
+			throw be;
+		}
+	}
+
+	@Override
+	public Utilisateur selectUserByMail(String email) throws BusinessException {
+		Utilisateur utilisateur = null;
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_EMAIL);) {
+			pstmt.setString(1, email);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"),
+							rs.getString("nom"), rs.getString("prenom"), rs.getString("email"),
+							rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"),
+							rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"),
+							rs.getInt("administrateur"));
+				
+				} 
+				return utilisateur;	
+			} catch (Exception e) {
+				BusinessException be = new BusinessException();
+				be.ajouterErreur(CodesResultatDAL.CODE_ERREUR_TECHNIQUE);
+				throw be;
+			}
+		} catch (Exception e) {
+			BusinessException be = new BusinessException();
+			be.ajouterErreur(CodesResultatDAL.CODE_ERREUR_TECHNIQUE);
+			throw be;
+		}
 	}
 
 	
