@@ -15,8 +15,8 @@
 <!-- Barre de nav -->
 
 	<nav class = "nav">
-	<a href = ""><h1>Enchères ENI</h1></a>
-	<a href = "#">S'inscrire - Se connecter</a> 
+		<a href = ""><h1>Enchères ENI</h1></a>
+		<a href = "#">S'inscrire - Se connecter</a>
 	</nav>
 
 	<main>
@@ -27,10 +27,10 @@
 
 			<form action="" method="post">
 			
-			<div>
+			<div class = "column-1">
 
 					<p><label for="disconnected-search-filter">
-						Filtre : <input type = "text" class = "size">
+						Filtre : <input type = "text" class = "searchBar" >
 					</label></p>
 
 <!--  Liste déroulante de catégorie -->
@@ -44,11 +44,13 @@
 							<option value = "optionSport&Loisirs">SportsLoisirs</option>					
 						</select>
 					</p>
-					
-					<button class = "searchBtn">Rechercher</button>
+			
+			</div>
+			<div class = "column-2">
+				<button class = "searchBtn">Rechercher</button>
 			</div>
 			</form>
-			</div>
+		</div>
 			
 		<div class = "container-2">
 		
