@@ -16,43 +16,40 @@
 
 	<nav class = "nav">
 	<a href = ""><h1>Enchères ENI</h1></a>
-	<a href = "<%=request.getContextPath()%>/ServletConnexion.java">S'inscrire - Se connecter</a>
+	<a href = "#">S'inscrire - Se connecter</a> 
 	</nav>
 
 	<main>
-
-		<h3 style="text-align: center; height: 3rem;">Liste des Enchères</h3>
 
 <!-- Barre de recherche -->
 
 		<div class = "container-1">
 
-			<form action="<%=request.getContextPath()%>/Recherche" method="post">
+			<form action="" method="post">
+			
 			<div>
 
 					<p><label for="disconnected-search-filter">
-						Filtre : <input type = "text">
+						Filtre : <input type = "text" class = "size">
 					</label></p>
 
-				<p>
-					<label for="search-categorie">Catégorie : </label>
-					<select style="width: 100%;">
-						<option value = "optionToutes">Toutes</option>
-						<option value = "optionInformatique">Informatique</option>
-						<option value = "optionAmeublement">Ameublement</option>
-						<option value = "optionVêtement">Vêtement</option>
-						<option value = "optionSport&Loisirs">Sports & Loisirs</option>
-					</select>
-				</p>
+<!--  Liste déroulante de catégorie -->
 
-				<div class = "searchBtn">
-					<button></button>
-				</div>
-
+					<p>Catégorie : 
+						<select style="width: 100%;">
+							<option value = "optionToutes">Toutes</option>
+							<option value = "optionInformatique">Informatique</option>
+							<option value = "optionAmeublement">Ameublement</option>
+							<option value = "optionVêtement">Vêtement</option>
+							<option value = "optionSport&Loisirs">SportsLoisirs</option>					
+						</select>
+					</p>
+					
+					<button class = "searchBtn">Rechercher</button>
 			</div>
-
-		</div>
-
+			</form>
+			</div>
+			
 		<div class = "container-2">
 		
 <!-- Attribution des valeurs des paramètres-->
@@ -65,17 +62,20 @@
 			
 			<c:set var="test"  value ="encheresEnCoursTitre"/>
 			<c:choose>
-			<c:when test ="null" >
-				<div>
-				<p><%= encheresEnCoursTitre%></p>
-				<p><%= encheresEnCoursPrix%></p>
-				<p><%= encheresEnCoursFinEnchere%></p>
-				<p><%= encheresEnCoursNomVendeur%></p>				
-				</div>
-			</c:when>
-			<c:otherwise>
-			<p>Aucune enchère en cours actuellement.</p>
-			</c:otherwise>
+			
+				<c:when test ="null" >
+					<div>
+					<p><%= encheresEnCoursTitre%></p>
+					<p><%= encheresEnCoursPrix%></p>
+					<p><%= encheresEnCoursFinEnchere%></p>
+					<p><%= encheresEnCoursNomVendeur%></p>				
+					</div>
+				</c:when>
+			
+				<c:otherwise>
+				<p>Aucune enchère en cours actuellement.</p>
+				</c:otherwise>
+				
 			</c:choose>
 			
 		</div>

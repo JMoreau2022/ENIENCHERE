@@ -1,41 +1,36 @@
+.size {
+	
+	height: 1.5rem;
+	width: 100%;
+	
+}
+
 .nav {
     display: flex;
+	align-items: center;
     justify-content: space-between;
-    align-items: center;
+    height: auto;
 }
 
 .container-1 {
     display: flex;
-    height: 6rem;
-}
-
-.categories {
-    width: 40%;
-    display: block;
-}
-
-.categories .filter {
     width: 100%;
-    height: 20px;
+    height: 6rem;
+    border: 1px solid;
 }
 
-.box-categories {
-    display: flex;
-    justify-content: space-between;
-    height: 20px;
-}
-
-.box-cat .cat {
-    width: 75%;
-    height: 20px;
+.searchFilter {
+    width: 100%;
+    height: 1.5rem;
 }
 
 .searchBtn {
-    display: flex;
-    padding-left: 5rem;
-    width: 25%;
+    width: 25rem;
+    height: 15rem;
 }
 
 .searchBtn .search_btn {
+    font-size: large;
     width: 100%;
+    height: 100%;
 }
