@@ -57,7 +57,7 @@
 				<button>Rechercher</button>
 			</div>
 			
-			<div>
+			<div class = "achatVente">
 			
 <!-- Bouton achat-->
 

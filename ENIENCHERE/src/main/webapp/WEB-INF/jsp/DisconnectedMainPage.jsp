@@ -19,7 +19,7 @@
 			<a href = ""><h1>Enchères ENI</h1></a>
 	</div>
 	<div class = "sideNavBar">
-		<a href = ""> S'inscrire - Se connecter</a>
+		<a href = "<%=request.getContextPath()%>/Connexion"> S'inscrire - Se connecter</a>
 	</div>
 	</nav>
 
