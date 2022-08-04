@@ -16,7 +16,7 @@
 
 	<nav class = "nav">
 		<a href = ""><h1>Enchères ENI</h1></a>
-		<a href = "#">S'inscrire - Se connecter</a>
+		<a href = ""> S'inscrire - Se connecter</a>
 	</nav>
 
 	<main>
@@ -27,27 +27,27 @@
 
 			<form action="" method="post">
 			
-			<div class = "column-1">
+			<div class = "box-1">
 
-					<p><label for="disconnected-search-filter">
-						Filtre : <input type = "text" class = "searchBar" >
-					</label></p>
+				<p><label for="disconnected-searchBar">
+					Filtres : <input type = "text" class = "searchBar" >
+				</label></p>
 
 <!--  Liste déroulante de catégorie -->
 
-					<p>Catégorie : 
-						<select style="width: 100%;">
-							<option value = "optionToutes">Toutes</option>
-							<option value = "optionInformatique">Informatique</option>
-							<option value = "optionAmeublement">Ameublement</option>
-							<option value = "optionVêtement">Vêtement</option>
-							<option value = "optionSport&Loisirs">SportsLoisirs</option>					
-						</select>
-					</p>
+				<p>Catégorie : 
+					<select style="width: 100%;">
+						<option value = "optionToutes">Toutes</option>
+						<option value = "optionInformatique">Informatique</option>
+						<option value = "optionAmeublement">Ameublement</option>
+						<option value = "optionVêtement">Vêtement</option>
+						<option value = "optionSport&Loisirs">SportsLoisirs</option>					
+					</select>
+				</p>
 			
 			</div>
-			<div class = "column-2">
-				<button class = "searchBtn">Rechercher</button>
+			<div class = "box-2">
+				<button>Rechercher</button>
 			</div>
 			</form>
 		</div>
