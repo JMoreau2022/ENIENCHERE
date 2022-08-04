@@ -1,26 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ENI ENCHERES</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
-
-	<header>
-	
-		<p>ENI-Enchères</p>
-		<nav id="navAccueilNonConnecte">
-			<a href="/ENIENCHERE/CreationUtilisateur" class="itemsNavAccueilNonConnecte">S'inscrire</a>
-			<a href="/ENIENCHERE/Connexion" class="itemsNavAccueilNonConnecte">Se connecter</a>
-		</nav>
-	
-	</header>
-
-
-	<h1>user</h1>
-	<h2>${user.nom}</h2>
-
 <body>
 
 </body>
