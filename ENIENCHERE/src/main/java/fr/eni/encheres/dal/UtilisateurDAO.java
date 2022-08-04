@@ -12,6 +12,10 @@ public interface UtilisateurDAO {
 	public Utilisateur selectUserByMail(String email) throws BusinessException;
 	
 	void testConnexion();
-	
+
+	public void ModifierUtilisateur(Utilisateur utilisateur) throws BusinessException;
+
+	public Utilisateur recupererUtilisateurParId(Integer id) throws BusinessException;
+					   
 	 
 }

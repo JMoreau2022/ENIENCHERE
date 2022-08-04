@@ -20,13 +20,6 @@ import fr.eni.encheres.messages.BusinessException;
 public class ServletConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletConnexion() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**r
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,13 +42,25 @@ public class ServletConnexion extends HttpServlet {
 		UtilisateurManager utilisateurManager = new UtilisateurManager(); 
 		try {
 			user = utilisateurManager.connexionUtilisateur(identifiant,mdp);
+			
+			// TODO : mettre l'utilisateur dans la session pour le retrouver dans les autres pages
+			// on met l'objet en entier mais on aurait pu mettre seulement l'ID
+			request.getSession().setAttribute("user", user);
+
+			//HttpSession session = request.getSession();
+			// Set dans la session l'attribut "utilisateur"
+			//session.setAttribute("utilisateur", user);
+			
+			
+			// Si la connexion est établie, on se redirige vers la page d'AcceuilConnectee
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecte.jsp");
+			rd.forward(request, response);
+			
 		} catch (BusinessException be) {
 			request.setAttribute("listeDesErreurs", be.getListeCodesErreur());
 			doGet(request, response);
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/CreationUtilisateur.jsp");
-		rd.forward(request, response);
+
 	}
 
 }

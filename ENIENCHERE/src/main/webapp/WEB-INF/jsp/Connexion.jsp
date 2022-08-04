@@ -31,7 +31,7 @@
 
 		<c:if test="${!empty listeDesErreurs}">
 			<div>
-			  <strong>Un ou plusieurs champs de saisie sont mal renseignés</strong>
+			  <strong>Erreur</strong>
 			  <ul>
 			  	<c:forEach var="code" items="${listeDesErreurs}">
 			  		<li>${LecteurMessage.getMessageErreur(code)}</li>
