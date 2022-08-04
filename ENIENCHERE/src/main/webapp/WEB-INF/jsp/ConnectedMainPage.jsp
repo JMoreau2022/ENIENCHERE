@@ -21,7 +21,7 @@
 	<div class = "sideNavBar">
 		<a href = "">Enchères</a>
 		<a href = "">Vendre un article</a>
-		<a href = "">Mon profil</a>
+		<a href = "<%=request.getContextPath()%>/Profil">Mon profil</a>
 		<a href = "">Déconnexion</a>
 	</div>
 	</nav>
