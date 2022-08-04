@@ -10,24 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServletAccueilNonConnecte
+ * Servlet implementation class ServletConnectedMainPage
  */
-@WebServlet("/Accueil")
-public class ServletAccueilNonConnecte extends HttpServlet {
+@WebServlet("/ServletConnectedMainPage")
+public class ServletConnectedMainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletAccueilNonConnecte() {
-        super();
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/AccueilNonConnecte.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/ConnectedMainPage.jsp");
 		rd.forward(request, response);
 	}
 
