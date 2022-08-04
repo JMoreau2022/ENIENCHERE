@@ -15,8 +15,12 @@
 <!-- Barre de nav -->
 
 	<nav class = "nav">
-		<a href = ""><h1>Enchères ENI</h1></a>
+	<div>
+			<a href = ""><h1>Enchères ENI</h1></a>
+	</div>
+	<div class = "sideNavBar">
 		<a href = ""> S'inscrire - Se connecter</a>
+	</div>
 	</nav>
 
 	<main>

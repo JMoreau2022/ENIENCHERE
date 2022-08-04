@@ -16,7 +16,7 @@ import fr.eni.encheres.bo.ListeEncheres;
  * Servlet implementation class ServletMainPage
  */
 @WebServlet("/DisconnectedMainPage")
-public class ServletMainPage extends HttpServlet {
+public class ServletDisconnectedMainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
