@@ -145,6 +145,51 @@ public class UtilisateurManager {
 			throw be;
 		}
 	}
+
+	public Utilisateur modificationUtilisateur(Integer id, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String mdp) throws BusinessException {
+		Utilisateur utilisateur = null;
+		BusinessException be = new BusinessException(); 
+
+		System.out.println(id);
+		
+		// récupération de l'utilisateur id (celui qui est connecté) pour après tester le mail et pseudo que si les nouvelles saisies sont différentes
+		Utilisateur userConnecte = null;
+		userConnecte = this.utilisateurDAO.recupererUtilisateurParId(id);
+		System.out.println(userConnecte.toString());
+		// Si ce n'est pas le mot pseudo, on teste son unicité
+		if (!userConnecte.getPseudo().equals(pseudo) && this.utilisateurDAO.selectUserByPseudo(pseudo)!=null) {
+			be.ajouterErreur(CodesResultatBLL.USER_PSEUDO_DEJA_EXISTANT); 
+		}
+		// idem avec l'email
+		if  (!userConnecte.getEmail().equals(email) && this.utilisateurDAO.selectUserByMail(email)!=null) {
+			be.ajouterErreur(CodesResultatBLL.USER_MAIL_DEJA_EXISTANT); 
+		}
+			 		  
+		  // création d'un ojet Utilisateur 
+		  utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, mdp, 100, 0);
+		  
+		  // teste la validité de toutes les données saisies dans le formulaire
+		  validationPseudo(utilisateur, be); 
+		  validationNom(utilisateur, be);
+		  validationPrenom(utilisateur, be); 
+		  validationEMail(utilisateur, be);
+		  validationTelephone(utilisateur, be);
+		  validationRue(utilisateur, be);
+		  validationCodePostal(utilisateur, be);
+		  validationVille(utilisateur, be);
+		  validationMDP(utilisateur, be);
+		 		
+		if (!be.hasErreurs()) {
+			this.utilisateurDAO.ModifierUtilisateur(utilisateur);
+			return utilisateur;
+		}
+		else
+		{
+			throw be;
+		}
+		
+	}
 	
 	
 }

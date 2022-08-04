@@ -17,6 +17,10 @@
 	
 	</header>
 
+
+	<h1>user</h1>
+	<h2>${user.nom}</h2>
+
 <body>
 
 </body>
