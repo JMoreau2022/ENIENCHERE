@@ -6,11 +6,15 @@
     border: 1px solid;
 }
 
+.sideNavBar {
+	display: flex;
+	justify-content: space-around;
+}
+
 .container-1 {
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;
-    width: 100%;
     border: 1px solid;
 }
 
